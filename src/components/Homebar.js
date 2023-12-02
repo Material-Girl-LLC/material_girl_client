@@ -9,9 +9,14 @@ class Homebar extends Component {
                 <Container>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#home">Link</Nav.Link>
+                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link href="#Materials">Materials</Nav.Link>
+                            <Nav.Link href="#Tools">Tools</Nav.Link>
+                            <Nav.Link href="#Projects">Projects</Nav.Link>
                         </Nav>
+                        <Navbar.Text>
+                            Profile: <a href="#profile">Mathew</a>
+                        </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
