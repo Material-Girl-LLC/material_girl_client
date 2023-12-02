@@ -35,11 +35,11 @@ class App extends Component {
                   <Row>
                     <Description />
                   </Row>
-                  <Row>
-                    <Col className="p-0">
+                  <Row className="pt-2">
+                    <Col className="ps-0 pe-1">
                       <Description />
                     </Col>
-                    <Col className="p-0">
+                    <Col className="ps-1 pe-0">
                       <Description />
                     </Col>
                   </Row>

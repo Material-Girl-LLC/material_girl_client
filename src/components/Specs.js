@@ -27,6 +27,10 @@ class Specs extends Component {
                                 <td>Density</td>
                                 <td>3 sponges</td>
                             </tr>
+                            <tr>
+                                <td>Cost per gram</td>
+                                <td>5.00 pesos</td>
+                            </tr>
                         </tbody>
                     </Table>
                 </Card.Body>
