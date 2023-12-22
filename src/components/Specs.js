@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Table } from 'react-bootstrap';
+import { Card, Table, ProgressBar, Accordion } from 'react-bootstrap';
 
 
 class Specs extends Component {
@@ -7,7 +7,7 @@ class Specs extends Component {
         return (
             <Card>
                 <Card.Body>
-                    <Card.Title>Specs</Card.Title>
+                    {/* <Card.Title>Specs</Card.Title>
                     <Card.Text>
                         
                     </Card.Text>
@@ -33,6 +33,60 @@ class Specs extends Component {
                             </tr>
                         </tbody>
                     </Table>
+                    <ProgressBar variant="success" now={40} />
+                    <ProgressBar variant="info" now={20} />
+                    <ProgressBar variant="warning" now={60} />
+                    <ProgressBar variant="danger" now={80} /> */}
+                    <Accordion defaultActiveKey="0">
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Strength</Accordion.Header>
+                            <Accordion.Body>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header>Durability</Accordion.Header>
+                            <Accordion.Body>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header>Ease of Use</Accordion.Header>
+                            <Accordion.Body>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="3">
+                            <Accordion.Header>Price Point</Accordion.Header>
+                            <Accordion.Body>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
                 </Card.Body>
             </Card>
         )
