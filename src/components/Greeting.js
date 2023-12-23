@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Greeting = () => {
+const Greeting = (props) => {
+    console.log(props);
     return (
         <div>
-            <h1>Oak Wood</h1>
+            <h1>Hello {props.name}</h1>
         </div>
     )
 }

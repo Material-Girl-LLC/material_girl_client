@@ -1,0 +1,39 @@
+[
+    {
+        "name": "Wood",
+        "children": [
+            {
+                "name":"Oak",
+                "children": [
+                    {
+                        "name": "White Oak",
+                        "children": []
+                    },
+                    {
+                        "name": "Black Oak",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Metal",
+        "children": [
+            {
+                "name": "Aluminum"
+            }
+        ]
+    },
+    {
+        "name": "Stone",
+        "children":[
+            {
+                "name": "Granite"
+            },
+            {
+                "name": "Marble"
+            }
+        ]
+    }
+]

@@ -5,11 +5,12 @@ import Greeting from './components/Greeting';
 import Homebar from './components/Homebar';
 import Gallery from './components/Gallery';
 import Title from './components/Title';
-import Map from './components/Map';
+import Map from './components/MatMap';
 import Description from './components/Description';
 import Specs from './components/Specs';
 import Module1 from './components/Module1';
 import Strength from './components/Module2';
+import Sidenav from './components/Sidenav';
 import { Row, Col, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,12 +23,12 @@ class App extends Component {
         </Row>
         <Row>
           <Col>
-            <Map />
+            <Sidenav />
           </Col>
           <Col md={8}>
             <Container className="p-0">
               <Row>
-                <Title />
+                <Title name="White Oak Wood"/>
               </Row>
               <Row>
                 <Col md={4}>
