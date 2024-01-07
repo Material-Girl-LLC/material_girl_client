@@ -4,8 +4,13 @@ import { Badge, Stack } from 'react-bootstrap';
 
 class Title extends Component {
     render() {
-        return (                
-            <Stack gap={2} direction="horizontal"><h2>{this.props.name}</h2><Badge bg="primary">Wood</Badge><Badge bg="secondary">Tag1</Badge><Badge bg="secondary">Tag2</Badge></Stack>
+        return (
+            <Stack gap={2} direction="horizontal">
+                <h2>{this.props.name}</h2>
+                <Badge bg="primary">Wood</Badge>
+                <Badge bg="secondary">Tag1</Badge>
+                <Badge bg="secondary">Tag2</Badge>
+            </Stack>
         )
     }
 }
