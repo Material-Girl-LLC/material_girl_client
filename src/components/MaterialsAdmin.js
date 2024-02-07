@@ -43,7 +43,6 @@ class MaterialsAdmin extends Component {
         console.log(this.state.materials);
         return (
             <div>
-                <Homebar />
 
                 <h2>Hello, Administrator</h2>
 

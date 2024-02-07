@@ -23,9 +23,6 @@ function MaterialPage() {
         <div>
             <p>{!data ? "Loading..." : data}</p>
             <Row>
-                <Homebar />
-            </Row>
-            <Row>
                 <Col>
                     <Sidenav />
                 </Col>

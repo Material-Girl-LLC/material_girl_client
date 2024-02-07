@@ -12,6 +12,10 @@
                     {
                         "name": "Black Oak",
                         "children": []
+                    },
+                    {
+                        "name": "Red Oak",
+                        "children": []
                     }
                 ]
             }

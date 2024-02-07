@@ -44,7 +44,6 @@ class MaterialEdit extends Component {
         console.log(this.state.material);
         return (
             <div>
-                <Homebar />
                 <Title name={this.state.material.priority_name}/>
 
             </div>

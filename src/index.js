@@ -3,14 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import Header from './components/Header';
+import Homebar from './components/Homebar';
+import MaterialPage from './components/MaterialPage';
+import MaterialsAdmin from './components/MaterialsAdmin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <BrowserRouter>
+      <Homebar />
+      <Switch>
+        <Route path="/" exact={true} component={MaterialPage} /> 
+        <Route path="/materials" exact={true} component={MaterialsAdmin} />
+      </Switch>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
