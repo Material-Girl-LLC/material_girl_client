@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Header from './components/Header';
 import Homebar from './components/Homebar';
 import MaterialPage from './components/MaterialPage';
 import MaterialsAdmin from './components/MaterialsAdmin';

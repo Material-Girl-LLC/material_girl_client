@@ -54,7 +54,7 @@ class MaterialsAdmin extends Component {
                             <ListGroup.Item>
                             <Row>
                                     <Col>{material._id}</Col>
-                                    <Col><a href="#">{material.priority_name}</a></Col>
+                                    <Col><a href={"/materials/" + material._id}>{material.priority_name}</a></Col>
                                     <Col><Button variant="danger">Delete</Button>{' '}</Col>
                             </Row>
                             </ListGroup.Item>
