@@ -13,10 +13,22 @@ class MaterialsAdmin extends Component {
         this.state = {
             materials: null
         }
+
+        this.onClickCreate = this.onClickCreate.bind(this);
+        this.onClickDelete = this.onClickDelete.bind(this);
     }
 
     componentDidMount() {
         this.fetchMaterials();
+    }
+
+    onClickCreate() {
+        console.log("onClickCreate called!")
+    }
+
+    onClickDelete(material_object) {
+        console.log(`onClickDelete called for material ${material_object}`);
+        console.log(material_object);
     }
 
     async fetchMaterials() {
@@ -44,7 +56,7 @@ class MaterialsAdmin extends Component {
         return (
             <div>
 
-                <h2>Hello, Administrator</h2>
+                <h2>Materials <Button variant="primary" onClick={this.onClickCreate}>Create</Button>{' '}</h2>
 
                 <ListGroup>
 
@@ -53,9 +65,9 @@ class MaterialsAdmin extends Component {
                         <div>
                             <ListGroup.Item>
                             <Row>
-                                    <Col>{material._id}</Col>
-                                    <Col><a href={"/materials/" + material._id}>{material.priority_name}</a></Col>
-                                    <Col><Button variant="danger">Delete</Button>{' '}</Col>
+                                <Col>{material._id}</Col>
+                                <Col><a href={"/materials/" + material._id}>{material.priority_name}</a></Col>
+                                <Col><Button variant="danger" onClick={() => this.onClickDelete(material)}>Delete</Button>{' '}</Col>
                             </Row>
                             </ListGroup.Item>
                         </div>

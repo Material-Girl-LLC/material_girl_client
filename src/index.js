@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Row, Col } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 
 import Homebar from './components/Homebar';
 import MaterialPage from './components/MaterialPage';
@@ -13,11 +15,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Homebar />
-      <Switch>
-        <Route path="/" exact={true} component={MaterialPage} /> 
-        <Route path="/materials" exact={true} component={MaterialsAdmin} />
-      </Switch>
+      <Row>
+        <Homebar />
+      </Row>
+      <Row>
+        <Switch>
+          <Route path="/" exact={true} component={MaterialPage} /> 
+          <Route path="/materials" exact={true} component={MaterialsAdmin} />
+        </Switch>
+      </Row>
     </BrowserRouter>
   </React.StrictMode>
 );
