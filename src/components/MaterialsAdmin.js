@@ -14,16 +14,23 @@ class MaterialsAdmin extends Component {
             materials: null
         }
 
-        this.onClickCreate = this.onClickCreate.bind(this);
         this.onClickDelete = this.onClickDelete.bind(this);
+        this.goToMaterialEdit = this.goToMaterialEdit.bind(this);
     }
 
     componentDidMount() {
         this.fetchMaterials();
     }
 
-    onClickCreate() {
-        console.log("onClickCreate called!")
+    goToMaterialEdit(to_edit) {
+
+        if(to_edit){
+            console.log("editing a material");
+        }
+        else{
+            console.log("new material!")
+        }
+
     }
 
     onClickDelete(material_object) {
@@ -56,7 +63,7 @@ class MaterialsAdmin extends Component {
         return (
             <div>
 
-                <h2>Materials <Button variant="primary" onClick={this.onClickCreate}>Create</Button>{' '}</h2>
+                <h2>Materials <Button variant="primary" onClick={() => this.goToMaterialEdit()}>Create</Button>{' '}</h2>
 
                 <ListGroup>
 
@@ -68,6 +75,7 @@ class MaterialsAdmin extends Component {
                                 <Col>{material._id}</Col>
                                 <Col><a href={"/materials/" + material._id}>{material.priority_name}</a></Col>
                                 <Col><Button variant="danger" onClick={() => this.onClickDelete(material)}>Delete</Button>{' '}</Col>
+                                <Col><Button variant="secondary" onClick={() => this.goToMaterialEdit(material)}>Edit</Button> </Col>
                             </Row>
                             </ListGroup.Item>
                         </div>
