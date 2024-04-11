@@ -13,11 +13,13 @@ class MaterialsAdmin extends Component {
         super(props);
 
         this.state = {
-            materials: null
+            materials: null,
+            to_edit: null
         }
 
         this.onClickDelete = this.onClickDelete.bind(this);
         this.goToMaterialEdit = this.goToMaterialEdit.bind(this);
+        this.saveMaterial = this.saveMaterial.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +35,15 @@ class MaterialsAdmin extends Component {
             console.log("new material!")
         }
 
+    }
+
+    saveMaterial(to_edit) {
+        if(to_edit){
+            console.log("saving to material");
+        }
+        else {
+            console.log("creating new material");
+        }
     }
 
     onClickDelete(material_object) {
@@ -109,7 +120,7 @@ class MaterialsAdmin extends Component {
                                         <Form.Control type="text" placeholder="Parent Material (optional)" />
                                     </Form.Group>
                                 </Form>
-                                <Button variant="primary">Create</Button>
+                                <Button variant="primary" onClick={() => this.saveMaterial(this.state.to_edit)}>Create</Button>
                             </Card.Body>
                         </Card>
                     </Col>
