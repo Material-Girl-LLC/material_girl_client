@@ -4,6 +4,8 @@ import Homebar from './Homebar';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 
 class MaterialsAdmin extends Component {
 
@@ -65,24 +67,55 @@ class MaterialsAdmin extends Component {
 
                 <h2>Materials <Button variant="primary" onClick={() => this.goToMaterialEdit()}>Create</Button>{' '}</h2>
 
-                <ListGroup>
+                <Row>
+                    <Col>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>List of materials card</Card.Title>
+                                <Card.Text>Material 1, Material 2</Card.Text>
+                                <ListGroup>
 
-                {this.state.materials?.map(material => {
-                    return(
-                        <div>
-                            <ListGroup.Item>
-                            <Row>
-                                <Col>{material._id}</Col>
-                                <Col><a href={"/materials/" + material._id}>{material.priority_name}</a></Col>
-                                <Col><Button variant="danger" onClick={() => this.onClickDelete(material)}>Delete</Button>{' '}</Col>
-                                <Col><Button variant="secondary" onClick={() => this.goToMaterialEdit(material)}>Edit</Button> </Col>
-                            </Row>
-                            </ListGroup.Item>
-                        </div>
-                    )
-                })}
+                                {this.state.materials?.map(material => {
+                                    return(
+                                        <div>
+                                            <ListGroup.Item>
+                                            <Row>
+                                                <Col>{material._id}</Col>
+                                                <Col><a href={"/materials/" + material._id}>{material.priority_name}</a></Col>
+                                                <Col><Button variant="danger" onClick={() => this.onClickDelete(material)}>Delete</Button>{' '}</Col>
+                                                <Col><Button variant="secondary" onClick={() => this.goToMaterialEdit(material)}>Edit</Button> </Col>
+                                            </Row>
+                                            </ListGroup.Item>
+                                        </div>
+                                    )
+                                })}
+                                
+                                </ListGroup>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Edit material card</Card.Title>
+                                <Card.Text>Field A, Field B</Card.Text>
+                                <Form>
+                                    <Form.Group controlId="formGroupName">
+                                        <Form.Label>Material Name</Form.Label>
+                                        <Form.Control type="text" placeholder="Enter Material Name" />
+                                    </Form.Group>
+                                    <Form.Group controlId="formGroupParent">
+                                        <Form.Label>Parent Material</Form.Label>
+                                        <Form.Control type="text" placeholder="Parent Material (optional)" />
+                                    </Form.Group>
+                                </Form>
+                                <Button variant="primary">Create</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+
                 
-                </ListGroup>
 
             </div>
         )
