@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
+import MaterialEdit from './MaterialEdit';
+import { API_ROOT_URL } from 'client_config';
 
 class MaterialsAdmin extends Component {
 
@@ -14,12 +16,26 @@ class MaterialsAdmin extends Component {
 
         this.state = {
             materials: null,
+            material_name: '',
+            material_parent: '',
             to_edit: null
         }
 
         this.onClickDelete = this.onClickDelete.bind(this);
         this.goToMaterialEdit = this.goToMaterialEdit.bind(this);
         this.saveMaterial = this.saveMaterial.bind(this);
+    }
+
+    handleMaterialNameChange = (event) => {
+        this.setState({
+            material_name: event.target.value
+        })
+    }
+
+    handleParentChange = (event) => {
+        this.setState({
+            material_parent: event.target.value
+        })
     }
 
     componentDidMount() {
@@ -43,12 +59,30 @@ class MaterialsAdmin extends Component {
         }
         else {
             console.log("creating new material");
+            console.log(this.state);
+            this.insertMaterial(this.state.material_name, this.state.material_parent);
         }
     }
 
     onClickDelete(material_object) {
         console.log(`onClickDelete called for material ${material_object}`);
         console.log(material_object);
+    }
+
+    async insertMaterial({priority_name, parent}) {
+
+        const data = {
+            "priority_name": priority_name,
+            "parent": parent
+        }
+
+        const result = await axios.post(`http://localhost:3030/server/api/v1/materials`, data,
+        {
+            headers: {
+                authorization: 'NEED AUTH TOKEN',
+                'Content-type': 'application/json'
+            }
+        })
     }
 
     async fetchMaterials() {
@@ -113,7 +147,7 @@ class MaterialsAdmin extends Component {
                                 <Form>
                                     <Form.Group controlId="formGroupName">
                                         <Form.Label>Material Name</Form.Label>
-                                        <Form.Control type="text" placeholder="Enter Material Name" />
+                                        <Form.Control type="text" placeholder="Material Name" value={this.state.material_name} onChange={this.handleMaterialNameChange} />
                                     </Form.Group>
                                     <Form.Group controlId="formGroupParent">
                                         <Form.Label>Parent Material</Form.Label>

@@ -12,7 +12,8 @@ class MaterialEdit extends Component {
         super(props);
 
         this.state = {
-            material: null
+            name: '',
+            parent: ''
         }
     }
 
