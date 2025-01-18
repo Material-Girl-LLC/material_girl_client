@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import Oak1 from './img/Oak1.jpg'
+import Oak1 from './img/Oak1.jpg';
 
 
 class Gallery extends Component {
