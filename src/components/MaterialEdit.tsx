@@ -6,15 +6,16 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-class MaterialEdit extends Component {
+type Props = {
+    material_name: String
+};
 
-    constructor(props) {
+
+class MaterialEdit extends Component<Props> {
+
+    constructor(props: Props) {
         super(props);
 
-        this.state = {
-            name: '',
-            parent: ''
-        }
     }
 
     componentDidMount() {
@@ -42,10 +43,9 @@ class MaterialEdit extends Component {
     }
 
     render() {
-        console.log(this.state.material);
         return (
             <div>
-                <Title name={this.state.material.priority_name}/>
+                <Title name={this.props.material_name}/>
 
             </div>
         );

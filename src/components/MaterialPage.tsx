@@ -3,7 +3,7 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Homebar from './Homebar';
 import Gallery from './Gallery';
 import Title from './Title';
-import Map from './MatMap';
+import Map from  './MatMap';
 import Description from './Description';
 import Specs from './Specs';
 import Module1 from './Module1';

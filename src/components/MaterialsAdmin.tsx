@@ -9,9 +9,13 @@ import Form from 'react-bootstrap/Form';
 import MaterialEdit from './MaterialEdit';
 import { API_ROOT_URL } from 'client_config';
 
-class MaterialsAdmin extends Component {
+type Props = {
 
-    constructor(props) {
+}
+
+class MaterialsAdmin extends Component<Props> {
+
+    constructor(props: Props) {
         super(props);
 
         this.state = {
@@ -26,15 +30,15 @@ class MaterialsAdmin extends Component {
         this.saveMaterial = this.saveMaterial.bind(this);
     }
 
-    handleMaterialNameChange = (event) => {
+    handleMaterialNameChange = (event: Event) => {
         this.setState({
-            material_name: event.target.value
+            material_name: event.target
         })
     }
 
-    handleParentChange = (event) => {
+    handleParentChange = (event: Event) => {
         this.setState({
-            material_parent: event.target.value
+            material_parent: event.target
         })
     }
 

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Badge, Stack } from 'react-bootstrap';
 
+type Props = {
+    name: String
+}
 
-class Title extends Component {
+class Title extends Component<Props> {
     render() {
         return (
             <Stack gap={2} direction="horizontal">
