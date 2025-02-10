@@ -7,23 +7,36 @@ import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import MaterialEdit from './MaterialEdit';
-import { API_ROOT_URL } from 'client_config';
 
 type Props = {
 
 }
 
-class MaterialsAdmin extends Component<Props> {
+type Material = {
+
+}
+
+type MyState = {
+    materials: Array<Material>,
+    material_name: String,
+    material_parent: String,
+    to_edit: Material
+
+}
+
+class MaterialsAdmin extends Component<Props, MyState> {
+
+    state: MyState = {
+        materials: [],
+        material_name: 'new',
+        material_parent: 'new',
+        to_edit: 'new'
+    }
 
     constructor(props: Props) {
         super(props);
 
-        this.state = {
-            materials: null,
-            material_name: '',
-            material_parent: '',
-            to_edit: null
-        }
+        
 
         this.onClickDelete = this.onClickDelete.bind(this);
         this.goToMaterialEdit = this.goToMaterialEdit.bind(this);
@@ -32,13 +45,13 @@ class MaterialsAdmin extends Component<Props> {
 
     handleMaterialNameChange = (event: Event) => {
         this.setState({
-            material_name: event.target
+            material_name: ""
         })
     }
 
     handleParentChange = (event: Event) => {
         this.setState({
-            material_parent: event.target
+            material_parent: ""
         })
     }
 
@@ -46,9 +59,9 @@ class MaterialsAdmin extends Component<Props> {
         this.fetchMaterials();
     }
 
-    goToMaterialEdit(to_edit) {
+    goToMaterialEdit(to_edit: Material) {
 
-        if(to_edit){
+        if  (to_edit){
             console.log("editing a material");
         }
         else{
@@ -57,7 +70,7 @@ class MaterialsAdmin extends Component<Props> {
 
     }
 
-    saveMaterial(to_edit) {
+    saveMaterial(to_edit: Material) {
         if(to_edit){
             console.log("saving to material");
         }
