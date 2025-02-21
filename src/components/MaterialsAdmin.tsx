@@ -13,12 +13,14 @@ type Props = {
 }
 
 type Material = {
+    _id: String
+    priority_name: String
 
 }
 
 type MyState = {
     materials: Array<Material>,
-    material_name: String,
+    material_name: string,
     material_parent: String,
     to_edit: Material
 
@@ -30,13 +32,14 @@ class MaterialsAdmin extends Component<Props, MyState> {
         materials: [],
         material_name: 'new',
         material_parent: 'new',
-        to_edit: 'new'
+        to_edit: {
+            _id: "new",
+            priority_name: "new"
+        }
     }
 
     constructor(props: Props) {
         super(props);
-
-        
 
         this.onClickDelete = this.onClickDelete.bind(this);
         this.goToMaterialEdit = this.goToMaterialEdit.bind(this);
@@ -77,16 +80,16 @@ class MaterialsAdmin extends Component<Props, MyState> {
         else {
             console.log("creating new material");
             console.log(this.state);
-            this.insertMaterial(this.state.material_name, this.state.material_parent);
+            this.insertMaterial(this.state.material_name);
         }
     }
 
-    onClickDelete(material_object) {
+    onClickDelete(material_object: Material) {
         console.log(`onClickDelete called for material ${material_object}`);
         console.log(material_object);
     }
 
-    async insertMaterial({priority_name, parent}) {
+    async insertMaterial(priority_name: String) {
 
         const data = {
             "priority_name": priority_name,
@@ -126,8 +129,8 @@ class MaterialsAdmin extends Component<Props, MyState> {
         console.log(this.state.materials);
         return (
             <div>
-
-                <h2>Materials <Button variant="primary" onClick={() => this.goToMaterialEdit()}>Create</Button>{' '}</h2>
+                {/* TODO!!!! the below gotomaterialedit only operates on the first material */}
+                <h2>Materials <Button variant="primary" onClick={() => this.goToMaterialEdit(this.state.materials[0])}>Create</Button>{' '}</h2>
 
                 <Row>
                     <Col>
@@ -164,7 +167,7 @@ class MaterialsAdmin extends Component<Props, MyState> {
                                 <Form>
                                     <Form.Group controlId="formGroupName">
                                         <Form.Label>Material Name</Form.Label>
-                                        <Form.Control type="text" placeholder="Material Name" value={this.state.material_name} onChange={this.handleMaterialNameChange} />
+                                        <Form.Control type="text" placeholder="Material Name" value={this.state.material_name} onChange={() => this.handleMaterialNameChange} />
                                     </Form.Group>
                                     <Form.Group controlId="formGroupParent">
                                         <Form.Label>Parent Material</Form.Label>
