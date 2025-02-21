@@ -9,7 +9,20 @@ import Button from 'react-bootstrap/Button';
 
 import test_map from '../testing/test_map.json' // only for testing
 
-const MatMap = (props) => {
+type Material = {
+    _id: String
+    priority_name: String
+    children: Material[]
+
+}
+
+type Props = {
+
+    parents: Material[]     
+
+}
+
+const MatMap = (props: Props) => {
 
     const show = true;
     const [open, setOpen] = useState(true);
@@ -22,7 +35,7 @@ const MatMap = (props) => {
                 {props.parents?.map(child => {
                     return(
                         <ListGroup.Item>
-                        <a href="#" className='text-justify' onClick={() => setOpen(false)}>{child.name + ' >'}</a>
+                        <a href="#" className='text-justify' onClick={() => setOpen(false)}>{child.priority_name + ' >'}</a>
                         <MatMap parents={child.children} />
                         </ListGroup.Item>
                     );
