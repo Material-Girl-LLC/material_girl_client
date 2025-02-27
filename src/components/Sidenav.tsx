@@ -9,7 +9,7 @@ class Sidenav extends Component {
         const show = true;
 
         return (
-            <div placement='start' responsive="lg">
+            <div data-placement='start' data-responsive="lg">
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Material Map</Offcanvas.Title>
                 </Offcanvas.Header>

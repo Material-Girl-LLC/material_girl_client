@@ -92,8 +92,7 @@ class MaterialsAdmin extends Component<Props, MyState> {
     async insertMaterial(priority_name: String) {
 
         const data = {
-            "priority_name": priority_name,
-            "parent": parent
+            "priority_name": priority_name
         }
 
         const result = await axios.post(`http://localhost:3030/server/api/v1/materials`, data,
