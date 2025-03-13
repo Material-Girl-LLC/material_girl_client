@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Homebar from './components/Homebar';
 import MaterialPage from './components/MaterialPage';
 import MaterialsAdmin from './components/MaterialsAdmin';
+import Login from './components/Login';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
@@ -23,6 +24,7 @@ root.render(
         <Switch>
           <Route path="/" exact={true} component={MaterialPage} /> 
           <Route path="/materials" exact={true} component={MaterialsAdmin} />
+          <Route path="/login" exact={true} component={Login} />
         </Switch>
       </Row>
     </BrowserRouter>
