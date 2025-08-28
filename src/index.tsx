@@ -17,6 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <Route path="/login" exact={true} component={Login} />
       <Row>
         <Homebar />
       </Row>
@@ -24,7 +25,6 @@ root.render(
         <Switch>
           <Route path="/" exact={true} component={MaterialPage} /> 
           <Route path="/materials" exact={true} component={MaterialsAdmin} />
-          <Route path="/login" exact={true} component={Login} />
         </Switch>
       </Row>
     </BrowserRouter>
