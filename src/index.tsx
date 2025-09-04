@@ -12,22 +12,25 @@ import Homebar from './components/Homebar';
 import MaterialPage from './components/MaterialPage';
 import MaterialsAdmin from './components/MaterialsAdmin';
 import Login from './components/Login';
+import { AuthProvider } from './utils/auth';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Route path="/login" exact={true} component={Login} />
-      <Row>
-        <Homebar />
-      </Row>
-      <Row>
-        <Switch>
-          <Route path="/" exact={true} component={MaterialPage} /> 
-          <Route path="/materials" exact={true} component={MaterialsAdmin} />
-        </Switch>
-      </Row>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Route path="/login" exact={true} component={Login} />
+        <Row>
+          <Homebar />
+        </Row>
+        <Row>
+          <Switch>
+            <Route path="/" exact={true} component={MaterialPage} /> 
+            <Route path="/materials" exact={true} component={MaterialsAdmin} />
+          </Switch>
+        </Row>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 );
 

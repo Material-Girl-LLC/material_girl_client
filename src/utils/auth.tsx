@@ -1,16 +1,31 @@
-import { useState, createContext, useContext } from "react"
+import React, { useState, useEffect, createContext, useContext } from "react"
 
-const AuthContext = createContext(null)
+const AuthContext = createContext<any>(null)
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState(null)
 
-    const login = (user: null) => {
+    useEffect(() => {
+        try {
+            const stored = sessionStorage.getItem('user');
+            if (stored) {
+                setUser(JSON.parse(stored));
+            }
+        } catch {}
+    }, [])
+
+    const login = (user: any) => {
         setUser(user)
+        try {
+            sessionStorage.setItem('user', JSON.stringify(user));
+        } catch {}
     }
 
     const logout = () => {
         setUser(null)
+        try {
+            sessionStorage.removeItem('user');
+        } catch {}
     }
 
     return <AuthContext.Provider value={{ user, login, logout }}>

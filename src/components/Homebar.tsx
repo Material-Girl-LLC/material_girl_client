@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 class Homebar extends Component {
@@ -14,9 +15,9 @@ class Homebar extends Component {
                             <Nav.Link href="#Tools">Tools</Nav.Link>
                             <Nav.Link href="#Projects">Projects</Nav.Link>
                         </Nav>
-                        <Navbar.Text>
-                            Profile: <a href="#profile">Mathew</a>
-                        </Navbar.Text>
+                        <Nav>
+                            <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                        </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
