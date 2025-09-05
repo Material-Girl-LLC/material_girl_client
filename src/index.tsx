@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals'; TODO
-import { Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,22 +13,23 @@ import MaterialPage from './components/MaterialPage';
 import MaterialsAdmin from './components/MaterialsAdmin';
 import Login from './components/Login';
 import { AuthProvider } from './utils/auth';
+import MaterialEdit from './components/MaterialEdit';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
-        <Row>
-          <Homebar />
-        </Row>
-        <Row>
+        <Homebar />
+        <Container className="py-3">
           <Switch>
             <Route path="/login" exact={true} component={Login} />
+            <ProtectedRoute path="/materials/:id" exact={true} component={MaterialEdit} />
             <Route path="/" exact={true} component={MaterialPage} /> 
             <Route path="/materials" exact={true} component={MaterialsAdmin} />
           </Switch>
-        </Row>
+        </Container>
       </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>

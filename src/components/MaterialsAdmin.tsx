@@ -13,9 +13,9 @@ type Props = {
 }
 
 type Material = {
-    _id: String
-    priority_name: String
-
+    _id: any
+    priority_name?: string
+    name?: string
 }
 
 type MyState = {
@@ -62,15 +62,10 @@ class MaterialsAdmin extends Component<Props, MyState> {
         this.fetchMaterials();
     }
 
-    goToMaterialEdit(to_edit: Material) {
-
-        if  (to_edit){
-            console.log("editing a material");
-        }
-        else{
-            console.log("new material!")
-        }
-
+    goToMaterialEdit(to_edit: Material | null) {
+        const anyMat: any = to_edit as any;
+        const id = anyMat && anyMat._id ? anyMat._id.toString() : 'new';
+        window.location.href = `/materials/${id}`;
     }
 
     saveMaterial(to_edit: Material) {
@@ -95,7 +90,8 @@ class MaterialsAdmin extends Component<Props, MyState> {
             "priority_name": priority_name
         }
 
-        const result = await axios.post(`http://localhost:3030/server/api/v1/materials`, data,
+        const apiRoot = (window as any).client_config?.API_ROOT_URL || `http://${window.location.hostname}:3030/server`;
+        const result = await axios.post(`${apiRoot}/api/v1/materials`, data,
         {
             headers: {
                 authorization: 'NEED AUTH TOKEN',
@@ -106,7 +102,8 @@ class MaterialsAdmin extends Component<Props, MyState> {
 
     async fetchMaterials() {
         try {
-            const materials = await axios.get("http://localhost:3030/server/api/v1/materials",
+            const apiRoot = (window as any).client_config?.API_ROOT_URL || `http://${window.location.hostname}:3030/server`;
+            const materials = await axios.get(`${apiRoot}/api/v1/materials`,
             {
                 headers: {
                     'content-type': 'application/json'
@@ -129,31 +126,29 @@ class MaterialsAdmin extends Component<Props, MyState> {
         return (
             <div>
                 {/* TODO!!!! the below gotomaterialedit only operates on the first material */}
-                <h2>Materials <Button variant="primary" onClick={() => this.goToMaterialEdit(this.state.materials[0])}>Create</Button>{' '}</h2>
+                <h2>Materials <Button variant="primary" onClick={() => this.goToMaterialEdit(null)}>Create</Button>{' '}</h2>
 
                 <Row>
                     <Col>
                         <Card>
                             <Card.Body>
-                                <Card.Title>List of materials card</Card.Title>
-                                <Card.Text>Material 1, Material 2</Card.Text>
+                                <Card.Title>List of materials ({this.state.materials.length})</Card.Title>
                                 <ListGroup>
-
-                                {this.state.materials?.map(material => {
-                                    return(
-                                        <div>
-                                            <ListGroup.Item>
+                                {this.state.materials?.map((material, idx) => {
+                                    const anyMat: any = material as any;
+                                    const id: string = anyMat && anyMat._id && anyMat._id.toString ? anyMat._id.toString() : String(anyMat?._id);
+                                    const name: string = anyMat.priority_name || anyMat.name || id;
+                                    return (
+                                        <ListGroup.Item key={id || idx}>
                                             <Row>
-                                                <Col>{material._id}</Col>
-                                                <Col><a href={"/materials/" + material._id}>{material.priority_name}</a></Col>
+                                                <Col>{id}</Col>
+                                                <Col><a href={"/materials/" + id}>{name}</a></Col>
                                                 <Col><Button variant="danger" onClick={() => this.onClickDelete(material)}>Delete</Button>{' '}</Col>
-                                                <Col><Button variant="secondary" onClick={() => this.goToMaterialEdit(material)}>Edit</Button> </Col>
+                                                <Col><Button variant="secondary" onClick={() => this.goToMaterialEdit(material)}>Edit</Button></Col>
                                             </Row>
-                                            </ListGroup.Item>
-                                        </div>
+                                        </ListGroup.Item>
                                     )
                                 })}
-                                
                                 </ListGroup>
                             </Card.Body>
                         </Card>

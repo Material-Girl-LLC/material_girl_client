@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useAuth } from '../utils/auth';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 
 function Login() {
     const history = useHistory();
+    const location = useLocation<{ from?: string }>();
     const { login } = useAuth();
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -25,7 +26,8 @@ function Login() {
             if (response && response.status === 200) {
                 const { token, user } = response.data || {};
                 login(user, token);
-                history.push('/');
+                const redirectTo = (location.state && (location.state as any).from) || '/';
+                history.push(redirectTo);
             }
         } catch (e) {
             console.error(e);
