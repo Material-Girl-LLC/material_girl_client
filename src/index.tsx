@@ -19,12 +19,12 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
-        <Route path="/login" exact={true} component={Login} />
         <Row>
           <Homebar />
         </Row>
         <Row>
           <Switch>
+            <Route path="/login" exact={true} component={Login} />
             <Route path="/" exact={true} component={MaterialPage} /> 
             <Route path="/materials" exact={true} component={MaterialsAdmin} />
           </Switch>

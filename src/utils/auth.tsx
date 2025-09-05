@@ -14,10 +14,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         } catch {}
     }, [])
 
-    const login = (user: any) => {
+    const login = (user: any, token?: string) => {
         setUser(user)
         try {
             sessionStorage.setItem('user', JSON.stringify(user));
+            if (token) {
+                sessionStorage.setItem('token', token);
+            }
         } catch {}
     }
 
@@ -25,6 +28,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(null)
         try {
             sessionStorage.removeItem('user');
+            sessionStorage.removeItem('token');
         } catch {}
     }
 
